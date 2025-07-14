@@ -7,6 +7,28 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <style>
     body { padding-top: 56px; }
+    .placeholder-box {
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 5px;
+      background-color: #f8f9fa;
+    }
+    iframe {
+      width: 100%;
+      border: none;
+      height: 160px;
+    }
+    .nav-tabs {
+      border-bottom: 0 !important;
+    }
+    .nav-tabs .nav-link {
+      border: none !important;
+    }
+    .nav-tabs .nav-link.active {
+      background-color: transparent !important;
+      color: #fff !important;
+      box-shadow: none !important;
+    }
   </style>
 </head>
 <body>
@@ -22,9 +44,10 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navMenu">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#home">Home</a></li>
-        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#dashboard">Dashboard</a></li>
+      <ul class="navbar-nav nav nav-tabs ms-auto" role="tablist">
+        <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#home" role="tab">Home</a></li>
+        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#dashboard" role="tab">Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#services" role="tab">Services</a></li>
         <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></li>
         <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="#registerModal">Register</a></li>
         <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="#renewPassModal">Renew Pass</a></li>
@@ -35,18 +58,56 @@
 
 <!-- Tab Content -->
 <div class="tab-content mt-5 pt-4 container">
-  <div class="tab-pane fade show active" id="home">
+  <!-- Home -->
+  <div class="tab-pane fade show active" id="home" role="tabpanel">
     <div class="text-center">
-      <img src="https://img.icons8.com/ios-filled/100/bus.png" alt="Smart Bus Logo" width="80" height="80" class="mb-3" />
-      <h1 class="fw-bold">Welcome to Smart Bus</h1>
-      <p class="lead">Bus pass renewal,Real-time public transport tracking and route management system.</p>
+      <img src="https://img.icons8.com/ios-filled/100/bus.png" width="80" height="80" class="mb-3" />
+      <h1 class="fw-bold text-dark">Welcome to Smart Bus</h1>
+      <p class="lead text-secondary">Bus pass renewal, real-time public transport tracking and route management system.</p>
     </div>
   </div>
 
-  <div class="tab-pane fade" id="dashboard">
-    <h2>User Dashboard</h2>
-    <div class="alert alert-success">Welcome, [User Name Placeholder]</div>
-    <button class="btn btn-danger" disabled>Logout (Disabled without JS)</button>
+  <!-- Dashboard -->
+  <div class="tab-pane fade" id="dashboard" role="tabpanel">
+    <h2 class="text-dark">User Dashboard</h2>
+    <div class="alert alert-success">Welcome, [User Name]</div>
+    <button class="btn btn-danger" disabled>Logout</button>
+  </div>
+
+  <!-- Services -->
+  <div class="tab-pane fade" id="services" role="tabpanel">
+    <h2 class="mb-4 text-dark">Smart Bus Services</h2>
+
+    <!-- Bus Pass Application -->
+    <div class="mb-5">
+      <h4>Online Bus Pass Application</h4>
+      <div class="placeholder-box">
+        <div class="mb-3">
+          <label class="form-label">Full Name</label>
+          <input type="text" class="form-control" required />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-control" required />
+        </div>
+        <button class="btn btn-primary" type="button">Submit Application</button>
+      </div>
+    </div>
+
+    <!-- Real-Time Tracking -->
+    <div class="mb-5">
+      <h4>Real-Time Bus Tracking</h4>
+      <div class="placeholder-box text-center">
+        <p>Live bus tracking will be shown here on a map.</p>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/OpenStreetMap_Map.png/800px-OpenStreetMap_Map.png" alt="Map" class="img-fluid rounded" />
+      </div>
+    </div>
+
+    <!-- Live Occupancy -->
+    <div>
+      <h4>Live Occupancy Updates</h4>
+      <iframe src="live-occupancy" title="Live Occupancy"></iframe>
+    </div>
   </div>
 </div>
 
@@ -61,11 +122,11 @@
       <div class="modal-body">
         <div class="mb-3">
           <label class="form-label">Email address</label>
-          <input type="email" class="form-control" />
+          <input type="email" class="form-control" required />
         </div>
         <div class="mb-3">
           <label class="form-label">Password</label>
-          <input type="password" class="form-control" />
+          <input type="password" class="form-control" required />
         </div>
         <div class="text-end">
           <a href="#" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal" data-bs-dismiss="modal" class="small">Forgot Password?</a>
@@ -89,15 +150,34 @@
       <div class="modal-body">
         <div class="mb-3">
           <label class="form-label">Full Name</label>
-          <input type="text" class="form-control" />
+          <input type="text" class="form-control" required />
         </div>
         <div class="mb-3">
           <label class="form-label">Email address</label>
-          <input type="email" class="form-control" />
+          <input type="email" class="form-control" required />
         </div>
         <div class="mb-3">
           <label class="form-label">Password</label>
-          <input type="password" class="form-control" />
+          <input type="password" class="form-control" required />
+        </div>
+        <fieldset class="mb-3">
+          <legend class="col-form-label pt-0">Gender</legend>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="gender" value="male" required />
+            <label class="form-check-label">Male</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="gender" value="female" />
+            <label class="form-check-label">Female</label>
+          </div>
+        </fieldset>
+        <div class="mb-3">
+          <label class="form-label">Phone Number</label>
+          <input type="tel" class="form-control" placeholder="+1234567890" />
+        </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="terms" required />
+          <label class="form-check-label" for="terms">I agree to the terms and conditions</label>
         </div>
       </div>
       <div class="modal-footer">
@@ -118,71 +198,42 @@
       <div class="modal-body">
         <div class="mb-3">
           <label class="form-label">Enter your registered email</label>
-          <input type="email" class="form-control" />
+          <input type="email" class="form-control" required />
         </div>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-primary" type="button" disabled>Send Reset Link</button>
+        <button class="btn btn-primary" type="button">Send Reset Link</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Bus Pass Renewal Modal -->
+<!-- Renew Pass Modal -->
 <div class="modal fade" id="renewPassModal" tabindex="-1">
   <div class="modal-dialog">
-    <form class="modal-content" action="renew-pass.php" method="POST">
+    <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Renew Bus Pass</h5>
+        <h5 class="modal-title">Bus Pass Renewal</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body">
-
         <div class="mb-3">
           <label class="form-label">Bus Pass Number</label>
-          <input type="text" class="form-control" name="pass_number" placeholder="Enter your pass number" required />
+          <input type="text" class="form-control" required />
         </div>
-
         <div class="mb-3">
           <label class="form-label">Full Name</label>
-          <input type="text" class="form-control" name="fullname" placeholder="Enter your full name" required />
+          <input type="text" class="form-control" required />
         </div>
-
         <div class="mb-3">
           <label class="form-label">Email Address</label>
-          <input type="email" class="form-control" name="email" placeholder="Enter your email" required />
+          <input type="email" class="form-control" required />
         </div>
-
-        <div class="mb-3">
-          <label class="form-label">Renewal Duration</label>
-          <select class="form-select" name="renewal_duration" required>
-            <option value="" disabled selected>Select duration</option>
-            <option value="1_month">1 Month</option>
-            <option value="3_months">3 Months</option>
-            <option value="6_months">6 Months</option>
-            <option value="12_months">12 Months</option>
-          </select>
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label">Preferred Bus Route</label>
-          <select class="form-select" name="route">
-            <option value="route1">Route 1 - Downtown</option>
-            <option value="route2">Route 2 - Uptown</option>
-            <option value="route3">Route 3 - Suburbs</option>
-          </select>
-        </div>
-
-        <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="agreeRenew" name="agreeRenew" required />
-          <label class="form-check-label" for="agreeRenew">I confirm the above information is correct</label>
-        </div>
-
       </div>
       <div class="modal-footer">
-        <button class="btn btn-primary" type="submit">Renew Pass</button>
+        <button class="btn btn-primary" type="button">Renew Pass</button>
       </div>
-    </form>
+    </div>
   </div>
 </div>
 
