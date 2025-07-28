@@ -9,7 +9,7 @@
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
+       :root{
             --primary-color: #3a86ff;
             --secondary-color: #8338ec;
             --success-color: #06d6a0;
@@ -21,7 +21,7 @@
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f8f9fa;
+            background-color: #f0f2f5;
             color: #333;
             padding-top: 56px;
         }
@@ -229,7 +229,95 @@
                 margin-top: 10px;
             }
         }
+        
+        /* Bus pass specific styles */
+        .bus-pass {
+            background: linear-gradient(135deg, #3a86ff 0%, #8338ec 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .bus-pass::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .bus-pass::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: -50px;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .bus-pass-logo {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .bus-pass-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+        
+        .bus-pass-info {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+        
+        .bus-pass-barcode {
+            height: 60px;
+            background-color: white;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .bus-pass-barcode::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                90deg,
+                black,
+                black 5px,
+                white 5px,
+                white 10px
+            );
+        }
+        
+        .bus-pass-signature {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 1.5rem;
+            text-align: right;
+        }
+        
+        .pass-preview {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
     </style>
+
 </head>
 <body>
     <!-- Navbar -->
@@ -284,9 +372,6 @@
                         </button>
                     </div>
                 </div>
-                <div class="col-lg-6 mt-5 mt-lg-0">
-                    <img src="https://images.unsplash.com/photo-1534089136969-5758e9a5b3a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Bus Pass System" class="img-fluid rounded-3 shadow">
-                </div>
             </div>
         </div>
     </section>
@@ -327,14 +412,53 @@
         </div>
     </section>
 
+    <!-- Bus Pass Preview Section -->
+    <section class="py-5 bg-light" id="pass-preview">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Bus Pass Preview</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="bus-pass">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="bus-pass-logo">
+                                    <i class="fas fa-bus"></i>
+                                </div>
+                                <h3 class="mb-3">City Transit Authority</h3>
+                                <div class="bus-pass-number">BP-12345678</div>
+                                <div class="bus-pass-info"><strong>Name:</strong> John </div>
+                                <div class="bus-pass-info"><strong>Type:</strong> Monthly Pass</div>
+                                <div class="bus-pass-info"><strong>Valid From:</strong> 01/01/2023</div>
+                                <div class="bus-pass-info"><strong>Valid To:</strong> 31/01/2023</div>
+                            </div>
+                            <div class="col-md-6 text-end">
+                                <img src="https://picsum.photos/seed/busticket/100/100.jpg" alt="Pass Photo" class="rounded-circle mb-3">
+                                <div class="bus-pass-signature">John </div>
+                            </div>
+                        </div>
+                        <div class="bus-pass-barcode"></div>
+                        <div class="row mt-3">
+                            <div class="col-6">
+                                <div class="bus-pass-info"><strong>Issue Date:</strong> 15/12/2022</div>
+                            </div>
+                            <div class="col-6 text-end">
+                                <div class="bus-pass-info"><strong>Issue Location:</strong> Main Office</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Services Section -->
-    <section class="py-5 bg-light" id="services">
+    <section class="py-5" id="services">
         <div class="container">
             <h2 class="section-title text-center mb-5">Our Services</h2>
             <div class="row g-4">
                 <div class="col-md-6 col-lg-4">
                     <div class="card h-100">
-                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Pass Registration">
+                        <img src="Picture/img.jpeg" class="card-img-top" alt="Pass Registration">
                         <div class="card-body">
                             <h5 class="card-title">Pass Registration</h5>
                             <p class="card-text">Quick and easy registration process for new bus passes with online verification.</p>
@@ -360,38 +484,6 @@
                             <p class="card-text">Secure password recovery system to help users regain access to their accounts.</p>
                             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">Reset Password</button>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="py-5 bg-primary-custom" id="stats">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-6 col-md-3">
-                    <div class="counter-item">
-                        <div class="counter-number" data-count="25000">0</div>
-                        <div class="counter-text">Happy Users</div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="counter-item">
-                        <div class="counter-number" data-count="150">0</div>
-                        <div class="counter-text">Cities Covered</div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="counter-item">
-                        <div class="counter-number" data-count="99">0</div>
-                        <div class="counter-text">Satisfaction Rate (%)</div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="counter-item">
-                        <div class="counter-number" data-count="365">0</div>
-                        <div class="counter-text">Days of Support</div>
                     </div>
                 </div>
             </div>
@@ -511,7 +603,7 @@
                                 </div>
                                 <div>
                                     <h5>Phone</h5>
-                                    <p>+1 (555) 123-4567<br>+1 (555) 987-6543</p>
+                                    <p>044-45504476</p>
                                 </div>
                             </div>
                             <div class="d-flex mb-4">
@@ -529,84 +621,6 @@
                                 </div>
                                 <div>
                                     <h5>Working Hours</h5>
-                                    <p>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 10:00 AM - 4:00 PM</p>
+                                    <p>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 10:00 AM - 4:00 PM<br>Sunday-Holiday</p>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="row gy-4">
-                <div class="col-lg-4">
-                    <h5 class="mb-4">BusPass Pro</h5>
-                    <p class="mb-4">The leading bus pass management system providing secure, efficient, and user-friendly solutions for transport authorities and passengers.</p>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 footer-links">
-                    <h5 class="mb-4">Quick Links</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#home">Home</a></li>
-                        <li class="mb-2"><a href="#features">Features</a></li>
-                        <li class="mb-2"><a href="#services">Services</a></li>
-                        <li class="mb-2"><a href="#pricing">Pricing</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-2 col-md-4 footer-links">
-                    <h5 class="mb-4">Services</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#">Pass Registration</a></li>
-                        <li class="mb-2"><a href="#">Pass Renewal</a></li>
-                        <li class="mb-2"><a href="#">Password Reset</a></li>
-                        <li class="mb-2"><a href="#">Mobile App</a></li>
-                        <li><a href="#">API Integration</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-4 col-md-4">
-                    <h5 class="mb-4">Newsletter</h5>
-                    <p class="mb-4">Subscribe to our newsletter for updates and special offers.</p>
-                    <form class="d-flex">
-                        <input type="email" class="form-control me-2" placeholder="Your Email">
-                        <button type="submit" class="btn btn-primary">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-            <hr class="mt-4 mb-4" style="border-color: rgba(255,255,255,0.1);">
-            <div class="row">
-                <div class="col-md-6 text-center text-md-start">
-                    <p class="mb-0">&copy; 2023 BusPass Pro. All rights reserved.</p>
-                </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <a href="#" class="text-white me-3">Privacy Policy</a>
-                    <a href="#" class="text-white">Terms of Service</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Register Modal -->
-    <div class="modal fade" id="registerModal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Create Account</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <label class="form-label">Full Name</label>
-                        <input type="text" class="form-control" required />
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Email Address</label>
